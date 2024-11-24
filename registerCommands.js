@@ -8,7 +8,7 @@ dotenv.config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
+const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
 
 (async () => {
   try {
@@ -25,7 +25,7 @@ const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
     }
 
     await rest.put(
-      Routes.applicationCommands(process.env.DISCORD_ID),
+      Routes.applicationCommands(process.env.CLIENT_ID),
       { body: commands },
     );
 
