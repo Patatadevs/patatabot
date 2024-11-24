@@ -6,6 +6,20 @@ const MESSAGE_LIMIT = 3; // Número máximo de mensajes permitidos
 const TIME_LIMIT = 10 * 1000; // Ventana de tiempo en milisegundos (10 segundos)
 const MUTE_TIME = 5 * 60 * 1000; // Tiempo de muteo en milisegundos (5 minutos)
 
+// Ejecutar el script de registro de comandos
+exec("node registerCommands.js", (error, stdout, stderr) => {
+  if (error) {
+    console.error(`Error executing registerCommands.js: ${error.message}`);
+    return;
+  }
+  if (stderr) {
+    console.error(`stderr: ${stderr}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+});
+
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
